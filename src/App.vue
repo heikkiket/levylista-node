@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <a href="/admin">Admin</a>
     <div id="nav">
       <router-link to="/albums">Albums</router-link> |
       <router-link to="/stats">Stats</router-link>
