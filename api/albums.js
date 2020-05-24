@@ -7,8 +7,19 @@ module.exports = {
         this.db = db;
     },
 
-    getAll: async function() {
-        let result = await db.collection("levyt").find({}).toArray();
+    getAll: async function(sort, asc) {
+
+        if(["album", "artist"].includes(sort) === false) {
+            sort = "artist";
+        }
+
+        let direction = 1;
+        if(asc === false) {
+            direction = -1;
+        }
+
+        let result = await db.collection("levyt").find({})
+            .sort(sort, direction).toArray();
         return result;
     },
 
@@ -29,5 +40,9 @@ module.exports = {
 
     postNew: async function(album) {
         return await db.collection("levyt").insertOne(album.getData());
+    },
+
+    delete: async function(id) {
+        return await db.collection("levyt").deleteOne({_id: ObjectId(id)});
     }
 }
