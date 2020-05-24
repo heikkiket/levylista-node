@@ -2,6 +2,7 @@
     <div class="album-box">
         <router-link :to="albumLink">
             <div class="album-content">
+                <span v-if="admin" class="admin">admin</span>
                 <h2>{{album.artist}}</h2>
                 <h1>{{album.album}}</h1>
             </div>
@@ -14,11 +15,12 @@ export default {
     name: 'AlbumCard',
     props: {
         album: {
-            Type: Object
+            type: Object
         }
     },
     data () {
         return {
+            admin: false
         }
     },
     watch: {
@@ -48,7 +50,7 @@ export default {
 
  .album-content {
      display: grid;
-     grid-template-rows: 3rem 6rem 3rem;
+     grid-template-rows: 1rem 3rem 5rem 3rem;
  }
 
  h1, h2 {
@@ -57,13 +59,17 @@ export default {
  }
 
  h1 {
-     grid-row: 1 / span 1;
+     grid-row: 2 / span 1;
      font-size: 1.5rem;
  }
 
  h2 {
-     grid-row: 3 / span 1;
+     grid-row: 4 / span 1;
      font-size: 1.3rem;
      text-align: bottom;
+ }
+
+ .admin {
+     background: red;
  }
 </style>
