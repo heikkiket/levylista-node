@@ -1,21 +1,22 @@
 <template lang="html">
     <div class="addAlbum"><form>
-        <label>
+        <label for="artist">
             Artisti
-            <input type="text">
         </label>
-        <label>
+        <input id="artist" type="text">
+        <label for="album">
             Albumi
-            <input type="text">
         </label>
-        <label>
+        <input id="album" type="text">
+        <label for="year">
             Julkaisuvuosi
-            <input type="number">
         </label>
-        <label>
+        <input id="year" type="number">
+        <label for="format">
             Formaatti
-            <input type="text">
         </label>
+        <input id="format" type="text">
+    <input type="submit" value="Tallenna" />
     </form></div>
 </template>
 
@@ -42,8 +43,13 @@ export default {
      margin: 0 auto;
  }
 
+ form {
+     display: grid;
+     grid-template-columns: 12rem 1fr;
+ }
+
  label {
-     display: block;
+     text-align: right;
  }
 
  input[type=number] {
